@@ -2,8 +2,8 @@
  * Объект с вопросами.
 
  */
-const questions = {
-    question1: {
+const questions = [
+    {
         id: 1,
         text: "Текст вопроса один",
         rightAnswer: "правильный ответ 1",
@@ -14,7 +14,7 @@ const questions = {
         ],
         scores: 100
     },
-    question2: {
+    {
         id: 2,
         text: "Текст вопроса два",
         rightAnswer: "правильный ответ 2",
@@ -25,4 +25,4 @@ const questions = {
         ],
         scores: 100
     }
-};
+];

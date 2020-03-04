@@ -1,5 +1,12 @@
-
-
+function questionParse(questionId){
+    let answers = answersRandom();
+}
+function answersRandom(){
+    let answers = [];
+    for (let i = 0; i<4; i++){
+        answers[i] = Math.floor(Math.random()*1000);
+    }
+}
 
 /*
 let renderer = {
