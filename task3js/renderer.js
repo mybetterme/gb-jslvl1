@@ -1,41 +1,65 @@
-function questionParse(questionId){
-    let answers = answersRandom(questionId);
-    console.log(`${questionId + 1} вопрос: ${questions[questionId].text}`);
-    for (let i = 0; i<4; i++){
-        console.log(`\t${++i}. ${answers[--i]}`);
+let generateQuestion = {
+    questionParse(questionId){
+        let answers = answersRandom(questionId);
+        console.log(`${questionId + 1} вопрос: ${questions[questionId].text}`);
+        for (let i = 0; i<4; i++){
+            console.log(`\t${++i}. ${answers[--i]}`);
+        }
+    },
+    /**
+     * функция сравнения для функции сортировки
+     * выдаёт с примерно равной вероятностью, как положительный, так и отрицательный результат,
+     * что позволяет замешать ответы более-менее равномерно
+     * @returns {number}
+     */
+    compareRandom(a, b) {
+        return Math.random() - 0.5;
+    },
+    /**
+     * функция для замешивания ответов в случайном порядке
+     * @returns {[]}
+     */
+    answersRandom(questionId){
+        let answersOrder = [0, 1, 2, 3];
+        let answers = [];
+        answersOrder.sort(compareRandom);
+
+        for (let i = 0; i<4; i++){
+            answers.push(questions[questionId].answers[answersOrder[i]]);
+        }
+        return answers;
     }
-}
-function getAnswer() {
-    const avaibleNumbers = [1, 2, 3, 4];
-}
-function answerCheck() {
+};
 
-}
 
-/**
- * функция сравнения для функции сортировки
- * выдаёт с примерно равной вероятностью, как положительный, так и отрицательный результат,
- * что позволяет замешать ответы более-менее равномерно
- * @returns {number}
- */
-function compareRandom(a, b) {
-    return Math.random() - 0.5;
-}
-
-/**
- * функция для замешивания ответов в случайном порядке
- * @returns {[]}
- */
-function answersRandom(questionId){
-    let answersOrder = [0, 1, 2, 3];
-    let answers = [];
-    answersOrder.sort(compareRandom);
-
-    for (let i = 0; i<4; i++){
-        answers.push(questions[questionId].answers[answersOrder[i]]);
+let checkAnswer = {
+    getAnswer() {
+        const avaibleNumbers = [1, 2, 3, 4];
+        userAnswer = +prompt(`Введите номер варианта ответа`);
+        while (true){
+            if(isNaN(userAnswer)){
+                return null;
+            }
+            if (!avaibleNumbers.includes(userAnswer)) {
+                alert(`Введите число в диапазоне от 1 до 4`);
+                continue;
+            }
+            return userAnswer;
+        }
+    },
+    check(answerNum, questionId) {
+        if (answers[userAnswer] === questions[questionId].answers[questions[questionId].rightAnswer]){
+            console.log("Правильный ответ! Переходим к следующему вопросу.");
+            return true;
+        }
+        else {
+            console.log("Неправильный ответ! Вы проиграли");
+        }
     }
-    return answers;
-}
+};
+
+
+
 
 /*
 let renderer = {
