@@ -1,28 +1,27 @@
 let generateQuestion = {
     questionParse(questionId){
-        let answers = answersRandom(questionId);
+        let answers = generateQuestion.answersRandom(questionId);
         console.log(`${questionId + 1} вопрос: ${questions[questionId].text}`);
         for (let i = 0; i<4; i++){
             console.log(`\t${++i}. ${answers[--i]}`);
         }
     },
-    /**
-     * функция сравнения для функции сортировки
-     * выдаёт с примерно равной вероятностью, как положительный, так и отрицательный результат,
-     * что позволяет замешать ответы более-менее равномерно
-     * @returns {number}
-     */
-    compareRandom(a, b) {
+
+/*    compareRandom(a, b) {
         return Math.random() - 0.5;
-    },
+    },*/
     /**
-     * функция для замешивания ответов в случайном порядке
+     * метод для замешивания ответов в случайном порядке
+     * функция сравнения выдаёт с примерно равной вероятностью, как положительный, так и отрицательный результат,
+     * что позволяет замешать ответы более-менее равномерно
      * @returns {[]}
      */
     answersRandom(questionId){
         let answersOrder = [0, 1, 2, 3];
         let answers = [];
-        answersOrder.sort(compareRandom);
+        answersOrder.sort(function (a, b) {
+            return Math.random() - 0.5;
+        });
 
         for (let i = 0; i<4; i++){
             answers.push(questions[questionId].answers[answersOrder[i]]);
@@ -35,7 +34,7 @@ let generateQuestion = {
 let checkAnswer = {
     getAnswer() {
         const avaibleNumbers = [1, 2, 3, 4];
-        userAnswer = +prompt(`Введите номер варианта ответа`);
+        const userAnswer = +prompt(`Введите номер варианта ответа`);
         while (true){
             if(isNaN(userAnswer)){
                 return null;
@@ -48,13 +47,7 @@ let checkAnswer = {
         }
     },
     check(answerNum, questionId) {
-        if (answers[userAnswer] === questions[questionId].answers[questions[questionId].rightAnswer]){
-            console.log("Правильный ответ! Переходим к следующему вопросу.");
-            return true;
-        }
-        else {
-            console.log("Неправильный ответ! Вы проиграли");
-        }
+        return generateQuestion.questionParse(questionId).answers[answerNum] === questions[questionId].answers[questions[questionId].rightAnswer];
     }
 };
 

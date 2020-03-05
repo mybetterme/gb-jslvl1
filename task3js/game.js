@@ -3,15 +3,22 @@ let game = {
     run(){
         for (let i = 0; i < questions.length; i++){
             generateQuestion.questionParse(i);
-            checkAnswer.check(checkAnswer.getAnswer(),i);
+            if(checkAnswer.check(checkAnswer.getAnswer(),i)){
+                console.log("Правильный ответ! Переходим к следующему вопросу.");
+            }
+            else{
+                console.log("Неправильный ответ! Вы проиграли");
+                break;
+            }
+
         }
 
     },
 
     init(){
         console.log("Я хочу сыграть с вами в одну игру!\n");
-        //console.log("Чтобы начать игру наберите game.run() и нажмите Enter.");
-        game.run();
+        console.log("Чтобы начать игру наберите game.run() и нажмите Enter.");
+        //game.run();
     }
 };
 
