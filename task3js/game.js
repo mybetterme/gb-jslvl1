@@ -3,6 +3,7 @@ let game = {
     run(){
         for (let i = 0; i < questions.length; i++){
             questionParse(i);
+            answerCheck();
         }
     },
 
