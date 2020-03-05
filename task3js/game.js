@@ -3,7 +3,7 @@ let game = {
     run(){
         for (let i = 0; i < questions.length; i++){
             generateQuestion.questionParse(i);
-            checkAnswer.check(checkAnswer.getAnswer(),i);
+            //checkAnswer.check(checkAnswer.getAnswer(),i);
         }
 
     },

@@ -1,33 +1,31 @@
 let generateQuestion = {
     questionParse(questionId){
-        let answers = answersRandom(questionId);
+        let answers = [];
+        let answersOrder = generateQuestion.answersRandom();
+        for (let i = 0; i<4; i++){
+            answers.push(questions[questionId].answers[answersOrder[i]]);
+        }
         console.log(`${questionId + 1} вопрос: ${questions[questionId].text}`);
         for (let i = 0; i<4; i++){
             console.log(`\t${++i}. ${answers[--i]}`);
         }
     },
+
     /**
-     * функция сравнения для функции сортировки
+     * метод для замешивания ответов в случайном порядке,
      * выдаёт с примерно равной вероятностью, как положительный, так и отрицательный результат,
      * что позволяет замешать ответы более-менее равномерно
-     * @returns {number}
-     */
-    compareRandom(a, b) {
-        return Math.random() - 0.5;
-    },
-    /**
-     * функция для замешивания ответов в случайном порядке
+     *
+     * возвращает порядок вывода ответов
      * @returns {[]}
      */
-    answersRandom(questionId){
+    answersRandom(){
         let answersOrder = [0, 1, 2, 3];
-        let answers = [];
-        answersOrder.sort(compareRandom);
+        answersOrder.sort(function(a, b) {
+            return Math.random() - 0.5;
+        });
 
-        for (let i = 0; i<4; i++){
-            answers.push(questions[questionId].answers[answersOrder[i]]);
-        }
-        return answers;
+        return answersOrder;
     }
 };
 
