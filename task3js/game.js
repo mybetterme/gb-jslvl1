@@ -1,14 +1,20 @@
 let game = {
 
     run(){
+        for (let i = 0; i < questions.length; i++){
+            generateQuestion.questionParse(i);
+            checkAnswer.check(checkAnswer.getAnswer(),i);
+        }
 
     },
 
     init(){
         console.log("Я хочу сыграть с вами в одну игру!\n");
-        console.log("Чтобы начать игру наберите game.run() и нажмите Enter.");
+        //console.log("Чтобы начать игру наберите game.run() и нажмите Enter.");
+        game.run();
     }
 };
+
 game.init();
 /*
 let game = {
