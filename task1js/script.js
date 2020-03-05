@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Класс, создающий объект по заданным параметрам просто так для тренировки)
+ *
  */
 class parsedObject{
     constructor(units, tens, hundreds){
