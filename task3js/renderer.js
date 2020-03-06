@@ -1,16 +1,12 @@
 let generateQuestion = {
-    questionParse(questionId){
+    answersParse(questionId){
         let answers = [];
         let answersOrder = generateQuestion.answersRandom();
         for (let i = 0; i<4; i++){
             answers.push(questions[questionId].answers[answersOrder[i]]);
         }
-        console.log(`${questionId + 1} вопрос: ${questions[questionId].text}`);
-        for (let i = 0; i<4; i++){
-            console.log(`\t${++i}. ${answers[--i]}`);
-        }
+        return answers;
     },
-
     /**
      * метод для замешивания ответов в случайном порядке,
      * выдаёт с примерно равной вероятностью, как положительный, так и отрицательный результат,
@@ -26,11 +22,25 @@ let generateQuestion = {
         });
 
         return answersOrder;
+    },
+
+    checkAnswer(answerNum, questionId) {
+        if (answers[userAnswer] === questions[questionId].answers[questions[questionId].rightAnswer]){
+            console.log("Правильный ответ! Переходим к следующему вопросу.");
+            return true;
+        }
+        else {
+            console.log("Неправильный ответ! Вы проиграли");
+        }
     }
 };
 
+/** Объект с методами для проверки действий пользователя
+ *
+ * @type {{getAnswer: (function())}}
+ */
 
-let checkAnswer = {
+let userActions = {
     getAnswer() {
         const avaibleNumbers = [1, 2, 3, 4];
         userAnswer = +prompt(`Введите номер варианта ответа`);
@@ -44,16 +54,11 @@ let checkAnswer = {
             }
             return userAnswer;
         }
-    },
-    check(answerNum, questionId) {
-        if (answers[userAnswer] === questions[questionId].answers[questions[questionId].rightAnswer]){
-            console.log("Правильный ответ! Переходим к следующему вопросу.");
-            return true;
-        }
-        else {
-            console.log("Неправильный ответ! Вы проиграли");
-        }
     }
+};
+
+let checkAnswer = {
+
 };
 
 

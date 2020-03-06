@@ -1,9 +1,13 @@
 let game = {
-
     run(){
         for (let i = 0; i < questions.length; i++){
-            generateQuestion.questionParse(i);
-            //checkAnswer.check(checkAnswer.getAnswer(),i);
+            let answers = generateQuestion.answersParse(i);
+            console.log(`${i + 1} вопрос: ${questions[i].text}`);
+            for (let j = 0; j<4; j++){
+                console.log(`\t${++j}. ${answers[--j]}`);
+            }
+            let userAnswer = userActions.getAnswer();
+            checkAnswer.checkAnswer(userAnswer,i);
         }
 
     },
