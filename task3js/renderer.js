@@ -1,7 +1,7 @@
-let generateQuestion = {
+let questionMethods = {
     answersParse(questionId){
         let answers = [];
-        let answersOrder = generateQuestion.answersRandom();
+        let answersOrder = questionMethods.answersRandom();
         for (let i = 0; i<4; i++){
             answers.push(questions[questionId].answers[answersOrder[i]]);
         }
@@ -16,22 +16,29 @@ let generateQuestion = {
      * @returns {[]}
      */
     answersRandom(){
-        let answersOrder = [0, 1, 2, 3];
+        let answersOrder = dictionary.slice();
         answersOrder.sort(function(a, b) {
             return Math.random() - 0.5;
         });
 
         return answersOrder;
     },
-
-    checkAnswer(answerNum, questionId) {
-        /*if (answers[userAnswer] === questions[questionId].answers[questions[questionId].rightAnswer]){
-            console.log("Правильный ответ! Переходим к следующему вопросу.");
-            return true;
-        }
-        else {
-            console.log("Неправильный ответ! Вы проиграли");
-        }*/
+    /**
+     * Метод для проверки правильности ответа. Сравниваю текст выбранного ответа и текст правильного.
+     * Не уверена, что это нормальный вариант, мне кажется, тут как-то слишком много действий,
+     * но после замешивания ответов только сравнение строк и осталось, тем более, что юзер самих строк никак не касается,
+     * и испортить или перепутать там ничего не может
+     *
+     * Или всё-таки правильнее было бы после замешивания ответов сразу получить новый индекс правильного ответа и сравнивать с ним символ,
+     * который вводит пользователь?
+     *
+     * @param answer - текст ответа, который выбрал юзер
+     * @param questionId - номер текущего вопроса
+     * @returns {boolean}
+     */
+    checkAnswer(answer, questionId) {
+        let rightAnswer = questions[questionId].rightAnswer;
+        return answer === questions[questionId].answers[rightAnswer];
     }
 };
 
@@ -42,60 +49,24 @@ let generateQuestion = {
 
 let userActions = {
     getAnswer() {
-        const avaibleNumbers = [1, 2, 3, 4];
         while (true){
-            userAnswer = +prompt(`Введите номер варианта ответа`);
-            if(isNaN(userAnswer)){
-                return null;
-            }
-            if (!avaibleNumbers.includes(userAnswer)) {
-                alert(`Введите число в диапазоне от 1 до 4`);
+            let userAnswer = prompt(`Введите номер варианта ответа`);
+            if (userAnswer === "") {
+                alert(`Введите один из вариантов ответа a, b, c или d`);
                 continue;
             }
-            return userAnswer;
-        }
-    }
-};
-
-let checkAnswer = {
-
-};
-
-
-
-
-/*
-let renderer = {
-    // Сюда запишем все что надо отобразить.
-    map: "",
-
-
-    render() {
-        // Цикл перебирает все строки, которые надо отобразить.
-        for (let row = 0; row < config.rowsCount; row++) {
-            // В каждой строке отображаем для каждой колонки (x - клетка, o - игрок).
-            for (let col = 0; col < config.colsCount; col++) {
-                // Проверяем, если на данной позиции должен быть и игрок, отображаем игрока, если нет - клетку.
-                if (player.y === row && player.x === col) {
-                    this.map += 'o ';
-                } else {
-                    this.map += 'x ';
-                }
+            if (userAnswer == null){
+                break;
             }
-            // После того как отобразили всю строку делаем переход на следующую строку.
-            this.map += '\n';
+            if (!dictionary.includes(userAnswer)) {
+                alert(`Введите один из вариантов ответа a, b, c или d`);
+                continue;
+            }
+            /*так как после замешивания нам особо сам символ не нужен, а нужен
+            * индекс ответа в перемешанном массиве с ответами, сразу его и возвращаю*/
+            return dictionary.indexOf(userAnswer);
         }
-        
-        // Выводим все что надо отобразить в игре.
-        console.log(this.map);
-    },
-
-    clear() {
-        // Чистим консоль.
-        console.clear();
-        // Чистим карту.
-        this.map = "";
     }
 };
 
-*/
+
