@@ -39,13 +39,12 @@ let game = {
             }
 
         }
-        if (confirm("Хотите сыграть ещё?")){
+        if (!confirm("Хотите сыграть ещё?")) {
+            console.log("До свидания, приходите ещё")
+        } else {
             console.clear();
             player.scores = 0;
-            game.run();
-        }
-        else{
-            console.log("До свидания, приходите ещё")
+            this.run();
         }
 
     },

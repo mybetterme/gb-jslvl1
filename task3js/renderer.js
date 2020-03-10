@@ -1,7 +1,7 @@
 let questionMethods = {
     answersParse(questionId){
         let answers = [];
-        let answersOrder = questionMethods.answersRandom();
+        let answersOrder = this.answersRandom();
         for (let i = 0; i<4; i++){
             answers.push(questions[questionId].answers[answersOrder[i]]);
         }
