@@ -1,0 +1,16 @@
+{
+  "name": "gb-html-1",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Ex-nihilo-boop",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-watch": "^5.0.1",
+    "rimraf": "^3.0.0"
+  }
+}
