@@ -16,7 +16,7 @@ const path = {
     src: {
         html: 'src/*.html',
         js: 'src/js/*.js',
-        style: 'src/css/*.scss',
+        style: 'src/css/styles.scss',
         otherCss: 'src/css/*.css'
     },
     watch: {

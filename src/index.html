@@ -5,19 +5,110 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Homework-5 | task 1</title>
+    <title>Homework-6 | task 1</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
 
-<div class="container" id="task3">
+<div class="container" id="task1">
+    <h2>Easy Slider</h2>
+    <p>Небольшой баг при первой прокрутке вправо, связанный с особенностями стилей. Пока не придумала, как поправить.</p>
+    <div id="slider">
+        <div class="slider&#45;&#45;loader">
+            <span class="fas fa-spinner"></span>
+        </div>
+        <div class="slide" style="background-image: url('https://picsum.photos/1024/768.webp?random=1')"></div>
+        <div class="slide" style="background-image: url('https://picsum.photos/1024/768.webp?random=2')"></div>
+        <div class="slide" style="background-image: url('https://picsum.photos/1024/768.webp?random=3')"></div>
+        <div class="slide" style="background-image: url('https://picsum.photos/1024/768.webp?random=4')"></div>
+        <div class="slide" style="background-image: url('https://picsum.photos/1024/768.webp?random=5')"></div>
 
+        <div class="slider-nav">
+            <a href="#" class="nav&#45;&#45;left"><span class="fas fa-arrow-alt-circle-left"></span></a>
+            <a href="#" class="nav&#45;&#45;right"><span class="fas fa-arrow-alt-circle-right"></span></a>
+        </div>
+    </div>
 </div>
-
-<script src="js/task1.js"></script>
-<script src="js/task2.js"></script>
-<script src="js/task3.js"></script>
+<div class="container" id="task2">
+    <div class="products">
+        <div class="product" id="1">
+            <div class="product--img"></div>
+            <div class="product--name">Товар 1</div>
+            <div class="product--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam at
+                cupiditate, dolorum ipsa ipsum itaque natus optio ut! Animi...
+            </div>
+            <div class="product--price"><span class="price">101</span> <span class="product--currency">р.</span></div>
+            <a href="#" class="btn btn-sm">Купить</a>
+        </div>
+        <div class="product" id="2">
+            <div class="product--img"></div>
+            <div class="product--name">Товар 2</div>
+            <div class="product--description">Architecto asperiores dignissimos dolor dolorem, esse facere, nobis
+                nostrum officiis placeat quas quisquam quos sint, totam ...
+            </div>
+            <div class="product--price"><span class="price">102</span> <span class="product--currency">р.</span></div>
+            <a href="#" class="btn btn-sm">Купить</a>
+        </div>
+        <div class="product" id="3">
+            <div class="product--img"></div>
+            <div class="product--name">Товар 3</div>
+            <div class="product--description">Ad, alias consequuntur culpa cumque explicabo facilis iste itaque, iure
+                magni minima mollitia nam quaerat quas quis rerum sunt...
+            </div>
+            <div class="product--price"><span class="price">103</span> <span class="product--currency">р.</span></div>
+            <a href="#" class="btn btn-sm">Купить</a>
+        </div>
+        <div class="product" id="4">
+            <div class="product--img"></div>
+            <div class="product--name">Товар 4</div>
+            <div class="product--description">Cumque dolor hic illo ipsum laudantium maxime molestias provident, quia
+                rem repellat. Architecto at beatae blanditiis commodi...
+            </div>
+            <div class="product--price"><span class="price">104</span> <span class="product--currency">р.</span></div>
+            <a href="#" class="btn btn-sm">Купить</a>
+        </div>
+        <div class="product" id="5">
+            <div class="product--img"></div>
+            <div class="product--name">Товар 5</div>
+            <div class="product--description">Atque eius est facere illum incidunt itaque, magni nulla, numquam officia
+                omnis porro quibusdam quod quos repellendus reprehenderit...
+            </div>
+            <div class="product--price"><span class="price">105</span> <span class="product--currency">р.</span></div>
+            <a href="#" class="btn btn-sm">Купить</a>
+        </div>
+        <div class="product" id="6">
+            <div class="product--img"></div>
+            <div class="product--name">Товар 6</div>
+            <div class="product--description">Ab architecto aspernatur assumenda aut consequatur cumque deleniti dicta
+                distinctio doloremque dolores eligendi facere fuga hic...
+            </div>
+            <div class="product--price"><span class="price">106</span> <span class="product--currency">р.</span></div>
+            <a href="#" class="btn btn-sm">Купить</a>
+        </div>
+    </div>
+    <div class="cart">
+        <h2>Корзина</h2>
+        <p>Пока что ваша корзина пуста</p>
+        <ul class="boughtItems"></ul>
+        <div class="boughtAmount">
+            <span class="boughtAmount--comment">Сумма ваших покупок:</span>
+            <span class="boughtAmount--amount">0</span>
+            <span class="boughtAmount--currency">р.</span>
+        </div>
+    </div>
+</div>
+<script>
+    let sliderSetup = {
+        width: "650px",
+        height: "400px",
+        speed: "500ms",
+        container: "#slider"
+    }
+</script>
+<script src="js/slider.js"></script>
+<script src="js/cart.js"></script>
 </body>
 </html>
